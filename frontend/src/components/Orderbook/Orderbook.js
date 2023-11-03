@@ -20,7 +20,7 @@ const Orderbook = ({themeId, option_1, option_2}) => {
             axios.get(url)
             .then(response => {
                 setOrders(response.data);
-                console.log("got orders");
+                console.log("got orders", response.data);
             }).catch(error => {
                 console.log(error);
                 window.alert(" order Error");
@@ -30,8 +30,11 @@ const Orderbook = ({themeId, option_1, option_2}) => {
         fetchOrders();
     }, []);
     
+    option_1 = "1";
+    option_2 = "2";
 
     const orderTypes = [option_1, option_2]; // Extract unique order types
+    
 
     const handleBetClick = () => {
         console.log("Bet clicked");
@@ -40,8 +43,10 @@ const Orderbook = ({themeId, option_1, option_2}) => {
     return (
         <div className="w-[100%] grid grid-cols-1 lg:gap-10 lg:grid-cols-2 my-[2.5vh] ">
             {errorMsg && <div className="text-red-500">{errorMsg}</div>}
-            {orderTypes.map((type, index) => (
-                <div key={index} className="">
+            {orderTypes.map((type, index) => {
+                
+                console.log(type)
+                return(<div key={index} className="">
                     <h1 className="text-3xl text-white font-semibold my-6 md:mb-4 lg:mb-4">{`Type ${type} Orders`}</h1>
                     <div className="w-full shadow-lg rounded-lg overflow-hidden">
                         <div className= {`${index ? 'border-green-color' : 'border-yellow-color'} bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white font-bold uppercase text-[0.8rem] leading-normal flex`}>
@@ -61,18 +66,23 @@ const Orderbook = ({themeId, option_1, option_2}) => {
                         <div className="text-white text-base font-bold my-8 h-[25vh] md:my-0 md:h-[40vh] lg:my-0 lg:h-[40vh] shadow-lg overflow-y-auto">
                             {orders
                                 .filter((order) => order.option === type)
-                                .map((order, orderIndex) => (
+                                .map((order, orderIndex) => {
+                                    console.log("type", type)
+                                    console.log("option", order.option)
+                                    console.log("order", order)
+                                    console.log("orderIndex", orderIndex)
+                                    return(
                                     <div
                                         key={orderIndex}
                                         className="border-b h-14 items-center border-secondary-color flex hover:bg-secondary-color hover:bg-opacity-50"
                                     >
                                         <div className="py-3 px-6 text-left flex-1">
-                                            {order.wallet.substring(0, 5) +
+                                            {order.public_key_starter.substring(0, 5) +
                                                 "..." +
-                                                order.wallet.substring(39, 42)}
+                                                order.public_key_starter.substring(39, 42)}
                                         </div>
                                         <div className="py-3 px-6 text-left flex-1">
-                                            {order.quantity}
+                                            {order.value}
                                         </div>
                                         <div className="py-3 px-6 text-left flex-1">
                                             {order.odd}
@@ -85,11 +95,11 @@ const Orderbook = ({themeId, option_1, option_2}) => {
                                             </button>
                                         </div>
                                     </div>
-                                ))}
+                                )})}
                         </div>
                     </div>
                 </div>
-            ))}
+            )})}
         </div>
     );
 };
