@@ -63,6 +63,10 @@ export async function createBet(req: Request, res: Response) {
 
         const address = p2wsh.address;
 
+        await connection.query(`
+            UPDATE bets SET escrow = $1 WHERE id = $2;
+        `,[address, betId]);
+
         return res.status(200).send({
             address, 
             witness: witnessScript
@@ -127,6 +131,39 @@ export async function confirmPayment(req: Request, res: Response) {
         console.log("betId", betId)
         
         return res.sendStatus(200);
+
+    } catch(err){
+        console.log(err);
+        return res.sendStatus(500);
+    }
+}
+
+export async function finishBet(req: Request, res: Response) {
+    try{
+        const betId = req.params.id;
+        await connection.query(`
+            UPDATE bets SET status='completed' WHERE id=$1;
+        `,[parseInt(betId)]);
+        console.log("betId", betId)
+        
+        return res.sendStatus(200);
+
+    } catch(err){
+        console.log(err);
+        return res.sendStatus(500);
+    }
+}
+
+export async function getUsersBets(req: Request, res: Response) {
+    try{
+        const publicKey = req.params.publicKey;
+        const query = await connection.query(`
+            SELECT * FROM bets WHERE public_key_starter = $1 OR public_key_accepter = $1;
+        `,[publicKey]);
+
+        const bets = query.rows;
+        return res.status(200).send(bets);
+
 
     } catch(err){
         console.log(err);

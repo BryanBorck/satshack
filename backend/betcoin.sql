@@ -6,11 +6,16 @@ create table bets(
     value integer,
     odd text,
     theme integer,
-    status text
+    status text,
+    option text
 );
 
 
 create table themes(
     id serial,
-    name text
+    name text,
+    option_1 text,
+    option_2 text,
+    description text,
+    img text
 );

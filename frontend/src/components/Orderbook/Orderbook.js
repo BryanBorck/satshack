@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Orderbook = ({themeId, option_1, option_2}) => {
     const [orders, setOrders] = useState([]);
@@ -25,6 +26,8 @@ const Orderbook = ({themeId, option_1, option_2}) => {
             setOrders([]);
         });
     };
+
+    const history = useNavigate();
 
     useEffect(() => {
         fetchOrders();
@@ -71,6 +74,8 @@ const Orderbook = ({themeId, option_1, option_2}) => {
             await fetchOrders();
             
             window.open("https://mempool.space/testnet/tx/" + txId);
+
+            history("/success");
             
             
 

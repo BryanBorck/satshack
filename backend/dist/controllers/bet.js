@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.confirmPayment = exports.getBetsFromThemeId = exports.startBet = exports.createBet = void 0;
+exports.getUsersBets = exports.finishBet = exports.confirmPayment = exports.getBetsFromThemeId = exports.startBet = exports.createBet = void 0;
 const bitcoin = require("bitcoinjs-lib");
 const secp256k1 = require("@bitcoinerlab/secp256k1");
 const descriptors = require("@bitcoinerlab/descriptors");
@@ -59,6 +59,9 @@ function createBet(req, res) {
             console.log("witnessScript", witnessScript);
             const p2wsh = bitcoin.payments.p2wsh({ redeem: p2ms, network });
             const address = p2wsh.address;
+            yield database_1.default.query(`
+            UPDATE bets SET escrow = $1 WHERE id = $2;
+        `, [address, betId]);
             return res.status(200).send({
                 address,
                 witness: witnessScript
@@ -130,4 +133,38 @@ function confirmPayment(req, res) {
     });
 }
 exports.confirmPayment = confirmPayment;
+function finishBet(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const betId = req.params.id;
+            yield database_1.default.query(`
+            UPDATE bets SET status='completed' WHERE id=$1;
+        `, [parseInt(betId)]);
+            console.log("betId", betId);
+            return res.sendStatus(200);
+        }
+        catch (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+    });
+}
+exports.finishBet = finishBet;
+function getUsersBets(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const publicKey = req.params.publicKey;
+            const query = yield database_1.default.query(`
+            SELECT * FROM bets WHERE public_key_starter = $1 OR public_key_accepter = $1;
+        `, [publicKey]);
+            const bets = query.rows;
+            return res.status(200).send(bets);
+        }
+        catch (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+    });
+}
+exports.getUsersBets = getUsersBets;
 //# sourceMappingURL=bet.js.map
