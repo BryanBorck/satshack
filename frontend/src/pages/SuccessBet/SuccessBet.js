@@ -27,7 +27,7 @@ export default function SuccessBet() {
                                 You just made a bet with Betcoin
                             </h2>
                             <button
-                            className="my-6 w-[90%] md:w-[55%] lg:w-[35%] bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold rounded-full border-2 border-transparent py-2 px-20 shadow-lg uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" onClick={() => history('/mybets')}
+                            className="my-6 w-[90%] md:w-[55%] lg:w-[35%] bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold rounded-full border-2 border-transparent py-2 px-20 shadow-lg uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" onClick={() => history('/mybet')}
                             >
                             See my bets
                             </button>

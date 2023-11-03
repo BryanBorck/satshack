@@ -5,6 +5,7 @@ import MyBet from "./pages/MyBets/MyBets";
 import Layout from "./pages/Layout/Layout";
 import SuccessBet from "./pages/SuccessBet/SuccessBet";
 import CreateTheme from "./pages/CreateTheme/CreateTheme";
+import CreateBet from "./pages/CreateBet/CreateBet";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/mybet" element={<MyBet />} />
                     <Route path="/success" element={<SuccessBet />} />
                     <Route path="/createtheme" element={<CreateTheme />} />
+                    <Route path="/createbet" element={<CreateBet />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -16,12 +16,6 @@ export default function Header() {
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
                         onClick={() => history('/')}
                     >
-                        Profile
-                    </button>
-                    <button
-                        className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/')}
-                    >
                         Explore
                     </button>
                     <button
@@ -42,6 +36,12 @@ export default function Header() {
                     >
                         Test Create Theme
                     </button>             
+                    <button
+                        className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
+                        onClick={() => history('/createbet')}
+                    >
+                        Test Create Bet
+                    </button>        
                 </div>
 
                 {/* sidebar menu
