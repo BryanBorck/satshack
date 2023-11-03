@@ -14,25 +14,25 @@ export default function Header() {
                     <img className="w-[80%] py-[10vh]" src={LogoApp} alt="Betcoin"/>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/home')}
+                        onClick={() => history('/')}
                     >
                         Profile
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/home')}
+                        onClick={() => history('/')}
                     >
                         Explore
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/home')}
+                        onClick={() => history('/')}
                     >
                         My Bets
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/home')}
+                        onClick={() => history('/')}
                     >
                         Exit
                     </button>                    
