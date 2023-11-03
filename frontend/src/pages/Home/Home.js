@@ -7,43 +7,57 @@ export default function Home() {
         // TESTE
         {
             id: 1,
-            title: 'Course 1',
+            name: 'Course 1',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 1 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 2,
-            title: 'Course 2',
+            name: 'Course 2',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 2 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 3,
-            title: 'Course 3',
+            name: 'Course 3',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 3 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 4,
-            title: 'Course 4',
+            name: 'Course 4',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 4 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 5,
-            title: 'Course 5',
+            name: 'Course 5',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 5 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 6,
-            title: 'Course 6',
+            name: 'Course 6',
+            option1: 'Option 1',
+            option2: 'Option 2',
             description: 'Course 6 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 7,
-            title: 'Course 7',
+            name: 'Course 7',
+            option1: 'Option 1',
+            oprtion2: 'Option 2',
             description: 'Course 7 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
@@ -51,7 +65,7 @@ export default function Home() {
 
     // const [courses, setCourses] = React.useState<{
     //     id: number,
-    //     title: string,
+    //     name: string,
     //     description: string,
     //     cover: string
     // }[]>([])
@@ -64,7 +78,7 @@ export default function Home() {
     //             let tmp = response.data.map((course: any) => {
     //                 return {
     //                     id: course.id,
-    //                     title: course.title,
+    //                     name: course.name,
     //                     description: course.description,
     //                     cover: "https://i.ytimg.com/vi/zlJ20s5d9To/maxresdefault.jpg"
     //                 }
@@ -76,12 +90,13 @@ export default function Home() {
     //             window.alert("Error");
     //         })
     // }, [])
+
     const betsElements = bets.map(bet => 
         {   
     
         return(<Link to={`/${bet.id}`}>
             <div key={bet.id} className="bg-cover bg-[url('././assets/bkg_active_card.png')] h-[180px] flex flex-col items-center justify-center text-white rounded-lg shadow-lg m-[2vh] border-2 border-transparent hover:border-white hover:bg-[url('././assets/bkg_second_card.png')] transition duration-1000 ease-in-out">
-                <h2 className="text-xl font-bold text-[#fcfcfc]">{bet.title}</h2>
+                <h2 className="text-xl font-bold text-[#fcfcfc]">{bet.name}</h2>
                 <p className="text-fs mt-2">{bet.description}</p>
                 <div className="grid grid-cols-3 space-x-4 mt-4 w-[80%]">
                     <div className="">
