@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Bet from "./pages/Bet/Bet";
 import MyBet from "./pages/MyBets/MyBets";
+import CreateBet from "./pages/CreateBet/CreateBet";
 import Layout from "./pages/Layout/Layout";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/:id" element={<Bet />} />
                     <Route path="/mybet" element={<MyBet />} />
+                    <Route path="/createbet/:id/:option" element={<CreateBet />} />
                 </Route>
             </Routes>
         </BrowserRouter>
