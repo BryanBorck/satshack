@@ -1,12 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import LogoApp from '../../assets/betcoin_logotext.png';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import LogoApp from "../../assets/betcoin_logotext.png";
 
-export default function Header() {
-    
+export default function Header({ isMetamaskInstalled, connectWallet, account, signer }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const history = useNavigate();
-    
+
     return (
         <header className="lg:w-[25vw] lg:h-screen p-4 text-fl text-white">
             <div className="w-[100%] h-[100%] container mx-auto px-4 py-2 rounded-[16px] shadow-xl flex justify-between bg-cover bg-[url('././assets/bkg_sidemenu.png')]">
@@ -14,13 +13,13 @@ export default function Header() {
                     <img className="w-[80%] py-[10vh]" src={LogoApp} alt="Betcoin"/>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/')}
+                        onClick={() => history("/")}
                     >
                         Explore
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/mybet')}
+                        onClick={() => history("/mybet")}
                     >
                         My Bets
                     </button>
@@ -101,7 +100,31 @@ export default function Header() {
                 </ul>
                 </div>
              */}
-             </div>
+            </div>
+
+            <>
+                {isMetamaskInstalled ? (
+                    <div
+                        onClick={connectWallet}
+                        className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 bg-secondary-color hover:bg-primary-color text-white rounded-full cursor-pointer transition duration-600 ease-in-out"
+                    >
+                        <h3 className="flex justify-center">
+                            {account
+                                ? "Wallet Connected: " +
+                                  account.substring(0, 5) +
+                                  "..." +
+                                  account.substring(39, 42)
+                                : "Connect Wallet"}
+                        </h3>
+                    </div>
+                ) : (
+                    <div className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 bg-secondary-color hover:bg-primary-color text-white rounded-full cursor-pointer transition duration-600 ease-in-out">
+                        <a href="https://metamask.io/download/">
+                            Install Metamask
+                        </a>
+                    </div>
+                )}
+            </>
         </header>
     );
-};
+}

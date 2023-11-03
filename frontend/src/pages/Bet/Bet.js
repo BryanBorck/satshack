@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import LogoApp from '../../assets/betcoin_logotext.png';
 import Orderbook from '../../components/Orderbook/Orderbook';
 
 export default function Bet() {
     const { id } = useParams();
+
+    const history = useNavigate();
 
     const [bet, setBet] = useState({
         // TESTE
@@ -36,8 +38,22 @@ export default function Bet() {
                     <div className='w-[100%] flex flex-col justify-center bg-gradient-to-r from-primary-blur to-secondary-blur rounded-[16px]'>
                         <img src={bet.cover} className="object-cover w-[100%] flex justify-center items-center h-[60vh] rounded-t-[16px]"/>
                         <div className='flex flex-row text-center w-full text-xl lg:text-3xl text-white font-bold cursor-pointer'>
-                            <div className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-yellow-color drop-shadow-glow rounded-bl-[16px] transition duration-1000 ease-in-out'>Create bet in {bet.option1}</div>
-                            <div className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-green-color drop-shadow-glow rounded-br-[16px] transition duration-1000 ease-in-out'>Create bet in {bet.option2}</div>
+                            <button
+                                onClick={() => history(`/createbet/${bet.id}/${bet.option1}`)}
+                                className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-yellow-color drop-shadow-glow rounded-bl-[16px] transition duration-1000 ease-in-out'
+                            >
+                                <p>
+                                    Create bet in {bet.option1}
+                                </p>
+                            </button>
+                            <button
+                                onClick={() => history(`/createbet/${bet.id}/${bet.option2}`)}
+                                className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-green-color drop-shadow-glow rounded-br-[16px] transition duration-1000 ease-in-out'
+                            >
+                                <p>
+                                    Create bet in {bet.option2}
+                                </p>
+                            </button>
                         </div>
                     </div>
                     <div className='flex flex-row my-[5vh] content-center w-full'>
