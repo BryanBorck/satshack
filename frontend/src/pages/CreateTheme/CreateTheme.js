@@ -29,7 +29,7 @@ export default function CreateTheme() {
                                         <div className="mb-4 text-white">
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:space-x-12 lg:space-x-12">
                                             <div className="flex flex-col">
-                                                <label className="block font-medium md:text-xl lg:text-xl mb-2" htmlFor="name">
+                                                <label className="block font-medium md:text-md lg:text-md mb-2" htmlFor="name">
                                                     What will be the name of your fund?
                                                 </label>
                                                 <input
@@ -39,11 +39,11 @@ export default function CreateTheme() {
                                                     placeholder='Name'
                                                     value={name}
                                                     onChange={(e) => setName(e.target.value)}
-                                                    className=" bg-white md:text-xl lg:text-xl text-center text-black p-2 mt-4 rounded-full outline-0 shadow-lg hover:bg-gray-100 transition duration-1000 ease-in-out"
+                                                    className=" bg-transparent border-b-[1px] border-white md:text-md lg:text-md text-center text-white p-2 mt-4 outline-0 shadow-lg hover:bg-[rgba(256,256,256,0.05)] transition duration-1000 ease-in-out"
                                                 />
                                             </div>
                                             <div className="flex flex-col">
-                                                <label className="block font-medium md:text-xl lg:text-xl mb-2 mt-6 md:mt-0 lg:mt-0" htmlFor="ticker">
+                                                <label className="block font-medium md:text-md lg:text-md mb-2 mt-6 md:mt-0 lg:mt-0" htmlFor="ticker">
                                                     What will be its ticker representation?
                                                 </label>
                                                 <input
@@ -53,13 +53,13 @@ export default function CreateTheme() {
                                                     placeholder='Ticker'
                                                     value={ticker}
                                                     onChange={(e) => setTicker(e.target.value)}
-                                                    className="bg-white md:text-xl lg:text-xl text-center text-black p-2 mt-4 rounded-full outline-0 shadow-lg hover:bg-gray-100 transition duration-1000 ease-in-out"
+                                                    className="bg-transparent border-b-[1px] border-white md:text-md lg:text-md text-center text-white p-2 mt-4 outline-0 shadow-lg hover:bg-[rgba(256,256,256,0.05)] transition duration-1000 ease-in-out"
                                                 />
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:space-x-12 lg:space-x-12">
                                             <div className="flex flex-col">
-                                                <label className="block font-medium md:text-xl lg:text-xl mb-2 mt-6" htmlFor="admFee">
+                                                <label className="block font-medium md:text-md lg:text-md mb-2 mt-6" htmlFor="admFee">
                                                     What will be the admin fee (in %)?
                                                 </label>
                                                 <input
@@ -69,11 +69,11 @@ export default function CreateTheme() {
                                                     placeholder='Admin Fee'
                                                     value={admFee}
                                                     onChange={(e) => setAdmFee(e.target.value)}
-                                                    className=" bg-white md:text-xl lg:text-xl text-center text-black p-2 mt-4 rounded-full outline-0 shadow-lg hover:bg-gray-100 transition duration-1000 ease-in-out"
+                                                    className=" bg-transparent border-b-[1px] border-white md:text-md lg:text-md text-center text-white p-2 mt-4 outline-0 shadow-lg hover:bg-[rgba(256,256,256,0.05)] transition duration-1000 ease-in-out"
                                                 />
                                             </div>
                                             <div className="flex flex-col">
-                                                <label className="block font-medium md:text-xl lg:text-xl mb-2 mt-6" htmlFor="perfFee">
+                                                <label className="block font-medium md:text-md lg:text-md mb-2 mt-6" htmlFor="perfFee">
                                                     What will be the performance fee (in %)?
                                                 </label>
                                                 <input
@@ -83,7 +83,7 @@ export default function CreateTheme() {
                                                     placeholder='Performance Fee'
                                                     value={perfFee}
                                                     onChange={(e) => setPerfFee(e.target.value)}
-                                                    className=" bg-white md:text-xl lg:text-xl text-center text-black p-2 mt-4 rounded-full outline-0 shadow-lg hover:bg-gray-100 transition duration-1000 ease-in-out"
+                                                    className=" bg-transparent border-b-[1px] border-white md:text-md lg:text-md text-center text-white p-2 mt-4 outline-0 shadow-lg hover:bg-[rgba(256,256,256,0.05)] transition duration-1000 ease-in-out"
                                                 />
                                                 </div>
                                             </div>                                            
@@ -91,7 +91,7 @@ export default function CreateTheme() {
                                     </div>
                                 </div>
                                 <button
-                                className="bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold rounded-full border-2 border-transparent py-2 px-20 shadow-lg uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" 
+                                className="bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold border-2 border-transparent py-2 px-20 shadow-lg rounded-full uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" 
                                 // onClick={handleClick}
                                 >
                                 {loading ? 'Loading...' : 'Create'}
