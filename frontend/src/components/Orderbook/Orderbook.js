@@ -36,25 +36,36 @@ const Orderbook = ({themeId, option_1, option_2}) => {
     const orderTypes = ["1", "2"]; // Extract unique order types
     
 
-    const handleBetClick = async (betId) => {
+    const handleBetClick = async (betId, value) => {
+
+        try{
         
-        const url = `${process.env.REACT_APP_API_URL}/bet/accept`;
+            const url = `${process.env.REACT_APP_API_URL}/bet/accept`;
 
-        const accepter = await window.unisat.getPublicKey();
-        console.log("accepter", accepter)
+            const accepter = await window.unisat.getPublicKey();
+            console.log("accepter", accepter)
 
-        const body = {
-            bet_id: betId,
-            public_key_accepter: accepter
-        }
+            const body = {
+                bet_id: betId,
+                public_key_accepter: accepter
+            }
 
-        axios.post(url, body)
-        .then(() =>{
-            window.alert("Success!");
-        }).catch(error =>{
-            console.log(error);
+            const escrowAddress = await axios.post(url, body);
+            if(!window.confirm(`Now you need to send ${value} sats to ${escrowAddress.data.address}. Do you confirm?`)){
+                return;
+            }
+
+            const txId = await window.unisat.sendBitcoin(escrowAddress.data.address, parseInt(value));
+
+            window.alert("Success! Transaction ID: " + txId);
+            window.open("https://mempool.space/testnet/tx/" + txId);
+
+
+
+        } catch(err){
+            console.log(err);
             window.alert("Error");
-        });
+        } 
     }
 
     return (
@@ -83,10 +94,6 @@ const Orderbook = ({themeId, option_1, option_2}) => {
                             {orders
                                 .filter((order) => order.option === type)
                                 .map((order, orderIndex) => {
-                                    console.log("type", type)
-                                    console.log("option", order.option)
-                                    console.log("order", order)
-                                    console.log("orderIndex", orderIndex)
                                     return(
                                     <div
                                         key={orderIndex}
@@ -105,7 +112,7 @@ const Orderbook = ({themeId, option_1, option_2}) => {
                                         </div>
                                         <div className="py-3 px-6 text-left flex-1">
                                             <button 
-                                                onClick={() => handleBetClick(order.id)}
+                                                onClick={() => handleBetClick(order.id, order.value)}
                                                 className="w-full bg-transparent hover:bg-blue-color text-clue-color font-bold hover:text-white py-2 px-4 border-2 border-blue-color hover:border-transparent rounded">
                                                 Bet
                                             </button>
