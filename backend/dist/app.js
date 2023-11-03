@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.post("/bet/start", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.startBet)(req, res); }));
 app.post("/bet/accept", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.createBet)(req, res); }));
-app.get("/bets", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.getBetsFromThemeId)(req, res); }));
+app.get("/bets/:themeId", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.getBetsFromThemeId)(req, res); }));
 app.get("/themes", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, theme_1.getThemes)(req, res); }));
 app.post("/theme", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, theme_1.createTheme)(req, res); }));
 exports.default = app;

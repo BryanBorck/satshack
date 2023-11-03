@@ -96,7 +96,7 @@ exports.startBet = startBet;
 function getBetsFromThemeId(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const themeId = req.params.theme_id;
+            const themeId = req.params.themeId;
             const query = yield database_1.default.query(`
             SELECT * FROM bets WHERE theme = $1;
         `, [themeId]);

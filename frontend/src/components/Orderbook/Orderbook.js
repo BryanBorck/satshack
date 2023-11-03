@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 
-const Orderbook = ({themeId}) => {
+const Orderbook = ({themeId, option_1, option_2}) => {
     const [orders, setOrders] = useState([]);
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -16,23 +16,22 @@ const Orderbook = ({themeId}) => {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            try {
-                const url = `${process.env.REACT_APP_API_URL}/bets/${themeId}`;
-                axios.get(url)
-                
-
-                
-            } catch (error) {
+            const url = `${process.env.REACT_APP_API_URL}/bets/${themeId}`;
+            axios.get(url)
+            .then(response => {
+                setOrders(response.data);
+                console.log("got orders");
+            }).catch(error => {
+                console.log(error);
+                window.alert(" order Error");
                 setOrders([]);
-                setErrorMsg(error.message);
-                console.error("Error fetching data:", error);
-            }
+            });
         };
         fetchOrders();
     }, []);
     
 
-    const orderTypes = [...new Set(orders.map((order) => order.type))]; // Extract unique order types
+    const orderTypes = [option_1, option_2]; // Extract unique order types
 
     const handleBetClick = () => {
         console.log("Bet clicked");
@@ -61,7 +60,7 @@ const Orderbook = ({themeId}) => {
                         </div>
                         <div className="text-white text-base font-bold my-8 h-[25vh] md:my-0 md:h-[40vh] lg:my-0 lg:h-[40vh] shadow-lg overflow-y-auto">
                             {orders
-                                .filter((order) => order.type === type)
+                                .filter((order) => order.option === type)
                                 .map((order, orderIndex) => (
                                     <div
                                         key={orderIndex}

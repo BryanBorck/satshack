@@ -71,6 +71,7 @@ export default function Home() {
         axios.get(url)
         .then(response => {
             setBets(response.data);
+            console.log("themes", response.data)
             console.log("got themes");
         }).catch(error => {
             console.log(error);

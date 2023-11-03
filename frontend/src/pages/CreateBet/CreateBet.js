@@ -2,24 +2,42 @@ import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import LoadingAnim from '../../assets/loading.json';
 import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-export default function CreateBet() {
-    const { id, name, option } = useParams();
+export default function CreateBet({publicKey}) {
+    const { id, name, option, optionId } = useParams();
     const history = useNavigate();
 
     const [title, setName] = React.useState('');
-    const [qty, setQty] = React.useState(0.5);
-    const [odd, setOdd] = React.useState(10);
+    const [qty, setQty] = React.useState(1000);
+    const [odd, setOdd] = React.useState(1);
 
     const [loading, setLoading] = React.useState(false);
 
     const handleClick = async (id, title, qty, odd) => {
-        // setLoading(true);
-        // const unisat = window.unisat;
-        // const result = await unisat.createBet(id, title, qty, odd);
-        // setLoading(false);
-        // console.log(result);
-        // history(`../${id}`);
+        const url = `${process.env.REACT_APP_API_URL}/bet/start`;
+        if(publicKey == ""){
+            window.alert("Connect Wallet to Unisat");
+        }
+
+        const body = {
+            public_key: publicKey,
+            theme_id: id,
+            value: qty,
+            odd: odd,
+            option: optionId,
+        }
+
+        axios.post(url, body)
+        .then(() =>{
+            window.alert("Success!");
+            setQty(0);
+            setOdd(1);
+        }).catch(error =>{
+            console.log(error);
+            window.alert("Error");
+        });
+
     }
 
     return (
@@ -50,7 +68,7 @@ export default function CreateBet() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:space-x-12 lg:space-x-12">
                                             <div className="flex flex-col">
                                                 <label className="block font-medium md:text-md lg:text-md mb-2 mt-6" htmlFor="admFee">
-                                                    What will be your quantity?
+                                                    What will be your quantity (in sats)?
                                                 </label>
                                                 <input
                                                     type="number"
@@ -81,7 +99,7 @@ export default function CreateBet() {
                                     </div>
                                 </div>
                                 <p className="flex justify-center items-center h-[12vh] mx-6 text-xl italic text-center text-blue-color">
-                                    You are betting {qty} BTC on {option} in Theme {name}
+                                    You are betting {qty} sats on {option} in Theme {name}
                                 </p>
                                 <button
                                 className="bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold border-2 border-transparent py-2 px-20 shadow-lg rounded-full uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" 

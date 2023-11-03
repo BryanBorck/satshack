@@ -105,10 +105,8 @@ export async function getBetsFromThemeId(req: Request, res: Response){
         const query = await connection.query(`
             SELECT * FROM bets WHERE theme = $1;
         `,[themeId]);
-
         const bets = query.rows;
         return res.status(200).send(bets);
-
 
     } catch(err){
         console.log(err);

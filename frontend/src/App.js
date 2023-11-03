@@ -86,7 +86,9 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/:id" element={<Bet />} />
                     <Route path="/mybet" element={<MyBet />} />
-                    <Route path="/createbet/:id/:name/:option" element={<CreateBet />} />
+                    <Route path="/createbet/:id/:name/:option/:optionId" element={<CreateBet 
+                      publicKey={publicKey}
+                    />} />
                     <Route path="/success" element={<SuccessBet />} />
                     <Route path="/createtheme" element={<CreateTheme />} />
                 </Route>
