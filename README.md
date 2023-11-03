@@ -2,13 +2,11 @@
 
 ## Bitcoin Bet Platform
 
-Betcoin...
+Betcoin is a betting platform to users bet using Bitcoin in a multisig-2-in-3 format, it is a secure, descentralized and funny way to bet against friends and others about any topic that has 2 unique possible outcomes.
 
 ## The Idea
 
-> "The idea came from our own experience with the fund industry, both of us on the team have already/still interned at investment funds, in the normal asset analysis part. Crypto is not yet so widespread in Brazil, despite the growing expansion, and we saw the potential to decentralize the entire investment process in funds using smart contract technologies, like the ERC 6551. Thus arose whale.finance."
-
-This project uses ERC 6551 to allow managers to hold assets from investors. In this way, we can basically make a descentralized asset management using EVM. The platform is designed for the two publics: The investors, who will be able to invest their tokens in really great funds around the work in a safe way, and the managers, who will be able to manage and hold investor tokens and can have a profit to themselves.
+This project uses a DLC multisig-2-in-3 scheme, basically implemented using Miniscript, a technology that allow the platform to perform the bets using Bitcoin. The ideia is like an original betting platform in a way that is possible to bet in any theme (users can create one) and against other people, based in a orderbook, the features and implementationsn are listed in this ReadMe file and the presentation in the presentation folder.
 
 ___
 
@@ -19,26 +17,29 @@ ___
 
 Features:
 
-- **Funds List:** Can choose a fund in a list of funds to make an investment _(/fundslist route)_
-- **Invest:** Can see stats about the fund chosen, like a performance chart, and then invest in the favorite ones _(/funds/id route)_
-- **Dashboard:** Can see stats and metrics about your investments _(/investor route)_ + _(pivoted: not implement in the hackathon)_
-
-### Platform
-
-
+- *Bet Theme:* Can choose a theme to bet (/ route)
+- *Bet Against Option:* Can choose to bet against other person in the platform's orderbook (/bet/id route)
+- *Create Bet:* Can create a bet to people bet against it (/createbet/id/option route)
+- *Create Theme:* Can create a theme to make people bet against each other (/createtheme route) + (pivoted: not implement in the hackathon)
 
 ## How it Works
 
-- A concise overview of the technical workings of the platform.
-- The role of ERC 6551 and EVM in facilitating decentralized asset management.
+Functionality:
 
-![Project Photo](./frontend/src/assets/fund_creation.jpg)
+![Project Photo](./frontend/src/assets/implementation_screen.png)
+
+Choose theme screen:
+
+![Project Photo](./frontend/src/assets/theme_screen.png)
+
+Create bet or bet against screen:
+
+![Project Photo](./frontend/src/assets/bet_screen.png)
 
 ### Technology
 
-- Frontend: We used typescrit + tailwind css + vite.js to deploy more fast and be adjusted to our web3 project, that does not have backend
-- Contracts: We use ERC 6551 to allow managers to control assets from investor at the same time that the assets are safe in a different address.
-
+- Frontend: We used react.js + tailwind css to adjust our project
+- Backend: We used Node.js with the tecnologies associated with Bitcoin
 
 ### Folder Structure
 
@@ -52,76 +53,36 @@ Here is the folder structure of the project with comments about files:
     │          ├── App.tsx                               # Main application component
     │          ├── assets/                               
     │          ├── components/                          
-    │          │      ├── ConnectWallet/                 # Component to facilitate wallet connection
-    │          │      ├── DataDiv/                       # Component for data about fund
-    │          │      ├── Footer/                        
-    │          │      ├── FormInvestor/                  # Form component for investor details
-    │          │      ├── FormManager/                   # Form component for manager details
-    │          │      ├── FormSwap/                      # Component for swap functionality
+    │          │      ├── Orderbook/                     # Component to demo orderbook
     │          │      ├── Header/                        
-    │          │      ├── LineChartComponent/            # Component to display line charts (lib Recharts)
-    │          │      └── PieChartComponent/             # Component to display pie charts (lib Recharts)
-    │          ├── contracts/                            
-    │          │      ├── QuotaToken.ts                  # Quota token contract file
-    │          │      ├── SafeAccount.ts                 # Safe account contract file
-    │          │      └── WhaleFinance.ts                # WhaleFinance contract file
-    │          ├── firebase/                             
-    │          │      ├── test_database.json             # json with mock data to test database in firebase
-    │          ├── pages/                                
-    │          │      ├── CreateFund/                    # Manager: Page for creating a fund
-    │          │      ├── DashboardId/                   # Manager: Dashboard of specific fund, here the manager can **swap tokens**
-    │          │      ├── FundId/                        # Investor: Fund page with stats and **invest action**
-    │          │      ├── FundsList/                     # Investor: List of funds presented in the platform
-    │          │      ├── Home/                          # Home page
-    │          │      ├── Investor/                      # Investor: Dashboard showing investments and stats
-    │          │      ├── Layout/                        # Layout page to incorporate header in the app
-    │          │      ├── Manager/                       # Manager: Funds list of funds managed by the manager
-    │          │      ├── SuccessFund/                   # Page component to display fund creation success
-    │          │      └── SuccessInvestment/             # Page component to display investment success
-    │          └── utils/                                
-    │                ├── addresses.ts                    # File containing contract addresses
-    │                └── connectMetamask.ts              # Utility file to facilitate Metamask connection
+    │          └── pages/                                
+    │                 ├── Home/                          # Home: Page where the bet themes are displayed
+    │                 ├── CreateBet/                     
+    │                 ├── CreateTheme/                   
+    │                 ├── Bet/                           # Bet: Location of orderbook and option to create bet
+    │                 ├── Layout/                        # Layout page to incorporate header in the app
+    │                 ├── MyBets/                        # Bashboard to see status of user bets
+    │                 └── SuccessBet/                    # Page component to display bet success
     │
-    └── whale-finance/                                   # Directory for smart contracts
+    └── backend/                                         # Directory for the backend API connection Bitcoin multisig-2-in-3
           └── src/
-          │     ├── Counter.sol                          # Counter smart contract file
-          │     ├── ERC6551Registry.sol                  # ERC6551 Registry contract file
-          │     ├── MockERC20.sol                        # Mock ERC20 contract file for testing
-          │     ├── QuotaBeacon.sol                      # Quota Beacon contract file
-          │     ├── QuotaToken.sol                       # Quota Token contract file
-          │     ├── SafeAccount.sol                      # Safe Account contract file
-          │     ├── WhaleFinance.sol                     # Main WhaleFinance contract file
-          │     └── interface/                            
-          │           ├── IERC6551Account.sol            # Interface file for ERC6551 Account
-          │           ├── IERC6551Registry.sol           # Interface file for ERC6551 Registry
-          │           └── IV2SwapRouter.sol              # Interface file for Uniswap V2 Swap Router
-          └── test/
-                └── WhaleFinance.t.sol                   # Test file for WhaleFinance contract
+
 
 
 ## Implemented Solution
-
-### Demo
-
-[Demo Link](https://www.loom.com/share/6913cf323b4644cfbcb3133377d3ca2c?sid=17cfc3fb-4d68-4b81-a225-4d8d25e18772)
 
 ### How to run locally steps
 
 You need to run in the frontend:
 
-```
+
 npm install
-```
 
-The second step is to use the json file with keys and the .env keys of firebase to run and integrate with firebase the project:
-
-json file in frontend/src/firebase and the .end in the root folder of frontend/ to connect with my firebase access
 
 Then run the project with:
 
-```
-npm run dev
-```
+
+npm run start
 
 
 ## Team
@@ -130,4 +91,4 @@ Bryan Borck (developer/designer)
 
 Luiz Vasconcelos (blockchain developer)
 
-Daniel Yuki (developer)
+Daniel Yuki (developer)
