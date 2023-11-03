@@ -2,11 +2,11 @@
 
 ## Bitcoin Bet Platform
 
-Betcoin...
+Betcoin is a betting platform to users bet using Bitcoin in a multisig-2-in-3 format, it is a secure, descentralized and funny way to bet against friends and others about any topic that has 2 unique possible outcomes.
 
 ## The Idea
 
-This project uses ERC 6551 to allow managers to hold assets from investors. In this way, we can basically make a descentralized asset management using EVM. The platform is designed for the two publics: The investors, who will be able to invest their tokens in really great funds around the work in a safe way, and the managers, who will be able to manage and hold investor tokens and can have a profit to themselves.
+This project uses a DLC multisig-2-in-3 scheme, basically implemented using Miniscript, a technology that allow the platform to perform the bets using Bitcoin. The ideia is like an original betting platform in a way that is possible to bet in any theme (users can create one) and against other people, based in a orderbook, the features and implementationsn are listed in this ReadMe file and the presentation in the presentation folder.
 
 ___
 
@@ -24,7 +24,17 @@ Features:
 
 ## How it Works
 
-![Project Photo](./frontend/src/assets/fund_creation.jpg)
+Functionality:
+
+![Project Photo](./frontend/src/assets/implementation_screen.png)
+
+Choose theme screen:
+
+![Project Photo](./frontend/src/assets/theme_screen.png)
+
+Create bet or bet against screen:
+
+![Project Photo](./frontend/src/assets/bet_screen.png)
 
 ### Technology
 
@@ -54,28 +64,12 @@ Here is the folder structure of the project with comments about files:
     │                 ├── MyBets/                        # Bashboard to see status of user bets
     │                 └── SuccessBet/                    # Page component to display bet success
     │
-    └── backend/                                         # Directory for smart contracts
+    └── backend/                                         # Directory for the backend API connection Bitcoin multisig-2-in-3
           └── src/
-          │     ├── Counter.sol                          # Counter smart contract file
-          │     ├── ERC6551Registry.sol                  # ERC6551 Registry contract file
-          │     ├── MockERC20.sol                        # Mock ERC20 contract file for testing
-          │     ├── QuotaBeacon.sol                      # Quota Beacon contract file
-          │     ├── QuotaToken.sol                       # Quota Token contract file
-          │     ├── SafeAccount.sol                      # Safe Account contract file
-          │     ├── WhaleFinance.sol                     # Main WhaleFinance contract file
-          │     └── interface/                            
-          │           ├── IERC6551Account.sol            # Interface file for ERC6551 Account
-          │           ├── IERC6551Registry.sol           # Interface file for ERC6551 Registry
-          │           └── IV2SwapRouter.sol              # Interface file for Uniswap V2 Swap Router
-          └── test/
-                └── WhaleFinance.t.sol                   # Test file for WhaleFinance contract
+
 
 
 ## Implemented Solution
-
-### Demo
-
-[Demo Link](https://www.loom.com/share/6913cf323b4644cfbcb3133377d3ca2c?sid=17cfc3fb-4d68-4b81-a225-4d8d25e18772)
 
 ### How to run locally steps
 
@@ -89,7 +83,6 @@ Then run the project with:
 
 
 npm run start
-
 
 
 ## Team
