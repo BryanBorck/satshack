@@ -41,13 +41,13 @@ const Orderbook = () => {
     }
 
     return (
-        <div className="w-[100%] grid grid-cols-1 gap-10 lg:grid-cols-2 my-[2.5vh]">
+        <div className="w-[100%] grid grid-cols-1 lg:gap-10 lg:grid-cols-2 my-[2.5vh] ">
             {errorMsg && <div className="text-red-500">{errorMsg}</div>}
             {orderTypes.map((type, index) => (
                 <div key={index} className="">
-                    <h1 className="text-3xl text-white font-semibold mb-4">{`Type ${type} Orders`}</h1>
-                    <div className="min-w-max w-full shadow-lg rounded-lg overflow-hidden">
-                        <div className= {`${index ? 'border-green-color' : 'border-yellow-color'} bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white font-bold uppercase text-sm leading-normal flex`}>
+                    <h1 className="text-3xl text-white font-semibold my-6 md:mb-4 lg:mb-4">{`Type ${type} Orders`}</h1>
+                    <div className="w-full shadow-lg rounded-lg overflow-hidden">
+                        <div className= {`${index ? 'border-green-color' : 'border-yellow-color'} bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white font-bold uppercase text-[0.8rem] leading-normal flex`}>
                             <div className="py-3 px-6 text-left flex-1">
                                 Wallet
                             </div>
@@ -61,7 +61,7 @@ const Orderbook = () => {
                                 Bet now
                             </div>
                         </div>
-                        <div className="text-white text-base font-bold h-[40vh] shadow-lg overflow-y-auto">
+                        <div className="text-white text-base font-bold my-8 h-[25vh] md:my-0 md:h-[40vh] lg:my-0 lg:h-[40vh] shadow-lg overflow-y-auto">
                             {orders
                                 .filter((order) => order.type === type)
                                 .map((order, orderIndex) => (

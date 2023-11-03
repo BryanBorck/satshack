@@ -38,7 +38,7 @@ export default function CreateBet() {
                         </div>
                         <div className='flex flex-row justify-center mt-10 mb-10'>
                             <div className='w-[100%] mx-6 px-10 pb-6 shadow-lg text-white bg-cover bg-[url("././assets/bkg_card.png")] rounded-[20px]'>
-                                <h2 className="flex justify-center items-center h-[12vh] mx-6 text-4xl font-bold text-center text-white">
+                                <h2 className="flex justify-center items-center h-[12vh] mx-6 text-xl md:text-4xl lg:text-4xl font-bold text-center text-white">
                                     Create your bet for {option}
                                 </h2>
                                 <p className="flex justify-center items-center h-[4vh] mx-6 text-sm italic text-center text-blue-color">

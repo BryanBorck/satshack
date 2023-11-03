@@ -73,12 +73,12 @@ export default function MyBet() {
     ]);
 
     return (
-        <div className="w-[75vw] p-12">
+        <div className="md:w-[75vw] lg:w-[75vw] px-6 md:p-12 lg:p-12">
             <h1 className="text-3xl text-white font-semibold mb-8">My Bets</h1>
 
             {myBets.length ? (
-                <div className="flex flex-col shadow-lg rounded-lg overflow-hidden">
-                <div className="flex border-blue-color bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white uppercase text-sm leading-normal">
+                <div className="flex flex-col shadow-lg rounded-lg overflow-hidden mb-72 md:mb-0 lg:mb-0">
+                <div className="flex border-blue-color bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white uppercase text-[0.5rem] md:text-sm lg:text-sm leading-normal">
                     <div className="py-3 px-6 text-left flex-1">Title</div>
                     <div className="py-3 px-6 text-left flex-1">Bet On</div>
                     <div className="py-3 px-6 text-left flex-1">Quantity</div>
@@ -86,7 +86,7 @@ export default function MyBet() {
                     <div className="py-3 px-6 text-left flex-1">Status</div>
                     <div className="py-3 px-6 text-left flex-1">Accept Bet</div>
                 </div>
-                <div className="text-white text-base font-light">
+                <div className="text-white text-[0.6rem] md:text-sm lg:text-sm font-light">
                     {myBets.map((bet) => (
                         <div key={bet.id} className="border-b h-14 items-center border-secondary-color flex hover:bg-secondary-color hover:bg-opacity-50">
                             <div className="py-3 px-6 text-left flex-1">{bet.title}</div>

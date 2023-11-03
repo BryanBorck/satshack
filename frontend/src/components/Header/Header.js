@@ -9,7 +9,7 @@ export default function Header({ unisat, address, publicKey, isUnisatInstalled, 
     const history = useNavigate();
 
     return (
-        <header className="lg:w-[25vw] lg:h-screen p-4 text-fl text-white">
+        <header className="md:w-[25vw] md:h-screen lg:w-[25vw] lg:h-screen p-4 text-fl text-white">
             <div className="w-[100%] h-[100%] container mx-auto px-4 py-2 rounded-[16px] shadow-xl flex justify-between bg-cover bg-[url('././assets/bkg_sidemenu.png')]">
                 <div className="w-[100%] flex flex-row md:flex-col lg:flex-col items-center">
                     <img className="w-[30%] py-[1vh] md:w-[80%] md:py-[10vh] lg:w-[80%] lg:py-[10vh]" src={LogoApp} alt="Betcoin"/>

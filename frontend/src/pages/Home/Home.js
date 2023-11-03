@@ -4,62 +4,61 @@ import { Link } from 'react-router-dom';
 export default function Home() {
 
     const [bets, setBets] = useState([
-        // TESTE
         {
             id: 1,
-            name: 'Bet 1',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 1 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'US Elections',
+            option1: 'Biden',
+            option2: 'Trump',
+            description: 'Predict the winner of the US Elections.',
+            cover: 'https://img.staticmb.com/mbcontent/images/uploads/2023/1/white-house.jpg'
         },
         {
             id: 2,
-            name: 'Bet 2',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 2 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Libertadores Final',
+            option1: 'Fluminense',
+            option2: 'Boca Juniors',
+            description: 'Predict the winner of the Libertadores Final.',
+            cover: 'https://classic.exame.com/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-26-at-16.12.02.jpg?quality=70&strip=info&w=1024'
         },
         {
             id: 3,
-            name: 'Bet 3',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 3 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Tech Stock Battle',
+            option1: 'Apple',
+            option2: 'Microsoft',
+            description: 'Which company\'s stock will rise more by year-end?',
+            cover: 'https://s2-g1.glbimg.com/RXUDxXp0SrwO3uyvJw0cvAu4qe4=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/C/1/ID5fRMQhGi4XVMNRBTYg/1690899271225780.jpg'
         },
         {
             id: 4,
-            name: 'Bet 4',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 4 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Space Race',
+            option1: 'SpaceX',
+            option2: 'Blue Origin',
+            description: 'Which company will next successfully launch a manned mission to space?',
+            cover: 'https://robbreport.com/wp-content/uploads/2020/08/split-template-1-3-1.jpg'
         },
         {
             id: 5,
-            name: 'Bet 5',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 5 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Box Office Hit',
+            option1: 'Action Movie',
+            option2: 'Comedy Movie',
+            description: 'Predict which movie genre will top the box office this weekend.',
+            cover: 'https://miro.medium.com/v2/resize:fit:986/1*ipv_blIqB1SFUO5gmLAhtQ.png'
         },
         {
             id: 6,
-            name: 'Bet 6',
-            option1: 'Option 1',
-            option2: 'Option 2',
-            description: 'Bet 6 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Bestselling Book',
+            option1: 'Fiction',
+            option2: 'Non-Fiction',
+            description: 'Which category will top the bestsellers list this month?',
+            cover: 'https://i.insider.com/6270194e0983640018c0b65d?width=1200&format=jpeg'
         },
         {
             id: 7,
-            name: 'Bet 7',
-            option1: 'Option 1',
-            oprtion2: 'Option 2',
-            description: 'Bet 7 description',
-            cover: 'https://picsum.photos/seed/picsum/200/300'
+            name: 'Weather Forecast',
+            option1: 'Rain',
+            option2: 'No Rain',
+            description: 'Will it rain tomorrow in New York City?',
+            cover: 'https://img.freepik.com/fotos-gratis/textura-aspera-da-superficie-metalica_23-2148953930.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697241600&semt=ais'
         },
     ])
 
@@ -119,7 +118,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='w-[100vw] lg:w-[75vw] h-[100vh] text-gray-700 overflow-y-auto'>
+            <div className='w-[100vw] md:w-[75vw] lg:w-[75vw] h-[100vh] text-gray-700 overflow-y-auto'>
                 <section className="">
                     <div className="container mx-auto py-12 md:px-6 lg:px-6">
                         <h2 className="mb-2 text-4xl pl-6 font-bold text-white">
