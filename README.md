@@ -1,4 +1,4 @@
-# betcoin - SatsHack 2023
+# Betcoin - SatsHack 2023
 
 ## Bitcoin Bet Platform
 
