@@ -26,16 +26,22 @@ export default function Header() {
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/')}
+                        onClick={() => history('/mybet')}
                     >
                         My Bets
                     </button>
                     <button
                         className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
-                        onClick={() => history('/')}
+                        onClick={() => history('/success')}
                     >
-                        Exit
-                    </button>                    
+                        Test Success
+                    </button>        
+                    <button
+                        className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
+                        onClick={() => history('/createtheme')}
+                    >
+                        Test Create Theme
+                    </button>             
                 </div>
 
                 {/* sidebar menu
