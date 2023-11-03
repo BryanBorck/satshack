@@ -13,6 +13,15 @@ export default function CreateBet() {
 
     const [loading, setLoading] = React.useState(false);
 
+    const handleClick = async (id, title, qty, odd) => {
+        // setLoading(true);
+        // const unisat = window.unisat;
+        // const result = await unisat.createBet(id, title, qty, odd);
+        // setLoading(false);
+        // console.log(result);
+        // history(`../${id}`);
+    }
+
     return (
         <>
             <div className='h-screen w-[100vw] lg:w-[75vw] text-gray-700 overflow-y-auto'>
@@ -76,7 +85,7 @@ export default function CreateBet() {
                                 </p>
                                 <button
                                 className="bg-gradient-to-r from-primary-color to-secondary-color text-white font-bold border-2 border-transparent py-2 px-20 shadow-lg rounded-full uppercase tracking-wider hover:from-white hover:to-white hover:text-secondary-color hover:border-secondary-color transition duration-1000 ease-in-out" 
-                                // onClick={handleClick}
+                                onClick={() => handleClick(id, title, qty, odd)}
                                 >
                                 {loading ? 'Loading...' : 'Create'}
                                 </button>
