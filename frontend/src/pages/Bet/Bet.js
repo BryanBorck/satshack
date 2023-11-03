@@ -19,7 +19,7 @@ export default function Bet() {
     });
 
     return (
-        <div className='w-[100vw] lg:w-[75vw] overflow-y-auto'>
+        <div className='w-[100vw] md:w-[75vw] lg:w-[75vw] overflow-y-auto'>
             {bet ? (
                 <div className='flex flex-col items-start m-[2.5vh] lg:m-[5vh] space-y-8'>
                     <button
