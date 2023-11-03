@@ -80,7 +80,7 @@ export default function Home() {
         {   
     
         return(<Link to={`/${bet.id}`}>
-            <div key={bet.id} className="bg-cover bg-[url('././assets/bkg_card.png')] h-[180px] flex flex-col items-center justify-center text-white rounded-lg shadow-lg m-[2vh] hover:bg-[url('././assets/bkg_active_card.png')] transition duration-600 ease-in-out">
+            <div key={bet.id} className="bg-cover bg-[url('././assets/bkg_active_card.png')] h-[180px] flex flex-col items-center justify-center text-white rounded-lg shadow-lg m-[2vh] hover:bg-[url('././assets/bkg_second_card.png')] transition duration-600 ease-in-out">
                 <h2 className="text-xl font-bold text-[#fcfcfc]">{bet.title}</h2>
                 <p className="text-fs mt-2">{bet.description}</p>
                 <div className="grid grid-cols-3 space-x-4 mt-4 w-[80%]">
