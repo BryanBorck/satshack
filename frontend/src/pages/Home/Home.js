@@ -7,58 +7,58 @@ export default function Home() {
         // TESTE
         {
             id: 1,
-            name: 'Course 1',
+            name: 'Bet 1',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 1 description',
+            description: 'Bet 1 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 2,
-            name: 'Course 2',
+            name: 'Bet 2',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 2 description',
+            description: 'Bet 2 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 3,
-            name: 'Course 3',
+            name: 'Bet 3',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 3 description',
+            description: 'Bet 3 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 4,
-            name: 'Course 4',
+            name: 'Bet 4',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 4 description',
+            description: 'Bet 4 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 5,
-            name: 'Course 5',
+            name: 'Bet 5',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 5 description',
+            description: 'Bet 5 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 6,
-            name: 'Course 6',
+            name: 'Bet 6',
             option1: 'Option 1',
             option2: 'Option 2',
-            description: 'Course 6 description',
+            description: 'Bet 6 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
         {
             id: 7,
-            name: 'Course 7',
+            name: 'Bet 7',
             option1: 'Option 1',
             oprtion2: 'Option 2',
-            description: 'Course 7 description',
+            description: 'Bet 7 description',
             cover: 'https://picsum.photos/seed/picsum/200/300'
         },
     ])
@@ -98,18 +98,14 @@ export default function Home() {
             <div key={bet.id} className="bg-cover bg-[url('././assets/bkg_active_card.png')] h-[180px] flex flex-col items-center justify-center text-white rounded-lg shadow-lg m-[2vh] border-2 border-transparent hover:border-white hover:bg-[url('././assets/bkg_second_card.png')] transition duration-1000 ease-in-out">
                 <h2 className="text-xl font-bold text-[#fcfcfc]">{bet.name}</h2>
                 <p className="text-fs mt-2">{bet.description}</p>
-                <div className="grid grid-cols-3 space-x-4 mt-4 w-[80%]">
+                <div className="grid grid-cols-2 mt-4 w-[80%]">
                     <div className="">
-                        <p className='text-xl text-[#fcfcfc] font-bold'>123</p>
-                        <p>TVL</p>
+                        <p className='text-xl text-[#fcfcfc] font-bold'>64%</p>
+                        <p>{bet.option1}</p>
                     </div>
                     <div className="">
-                        <p className='text-xl text-[#fcfcfc] font-bold'>100</p>
-                        <p>Investors</p>
-                    </div>
-                    <div className="">
-                        <p className='text-xl text-[#fcfcfc] font-bold'>100</p>
-                        <p>Investors</p>
+                        <p className='text-xl text-[#fcfcfc] font-bold'>36%</p>
+                        <p>{bet.option2}</p>
                     </div>
                 </div>
             </div>
