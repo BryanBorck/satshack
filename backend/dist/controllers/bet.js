@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBetsFromThemeId = exports.startBet = exports.createBet = void 0;
+exports.confirmPayment = exports.getBetsFromThemeId = exports.startBet = exports.createBet = void 0;
 const bitcoin = require("bitcoinjs-lib");
 const secp256k1 = require("@bitcoinerlab/secp256k1");
 const descriptors = require("@bitcoinerlab/descriptors");
@@ -100,7 +100,7 @@ function getBetsFromThemeId(req, res) {
         try {
             const themeId = req.params.themeId;
             const query = yield database_1.default.query(`
-            SELECT * FROM bets WHERE theme = $1;
+            SELECT * FROM bets WHERE theme = $1 AND status = 'pending';
         `, [themeId]);
             const bets = query.rows;
             return res.status(200).send(bets);
@@ -112,4 +112,22 @@ function getBetsFromThemeId(req, res) {
     });
 }
 exports.getBetsFromThemeId = getBetsFromThemeId;
+function confirmPayment(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const betId = req.params.id;
+            const accepter = req.body.public_key_accepter;
+            yield database_1.default.query(`
+            UPDATE bets SET status='confirmed', public_key_accepter=$1 WHERE id=$2;
+        `, [accepter, parseInt(betId)]);
+            console.log("betId", betId);
+            return res.sendStatus(200);
+        }
+        catch (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+    });
+}
+exports.confirmPayment = confirmPayment;
 //# sourceMappingURL=bet.js.map

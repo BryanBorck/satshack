@@ -106,10 +106,27 @@ export async function getBetsFromThemeId(req: Request, res: Response){
     try{
         const themeId = req.params.themeId;
         const query = await connection.query(`
-            SELECT * FROM bets WHERE theme = $1;
+            SELECT * FROM bets WHERE theme = $1 AND status = 'pending';
         `,[themeId]);
         const bets = query.rows;
         return res.status(200).send(bets);
+
+    } catch(err){
+        console.log(err);
+        return res.sendStatus(500);
+    }
+}
+
+export async function confirmPayment(req: Request, res: Response) {
+    try{
+        const betId = req.params.id;
+        const accepter = req.body.public_key_accepter;
+        await connection.query(`
+            UPDATE bets SET status='confirmed', public_key_accepter=$1 WHERE id=$2;
+        `,[accepter, parseInt(betId)]);
+        console.log("betId", betId)
+        
+        return res.sendStatus(200);
 
     } catch(err){
         console.log(err);

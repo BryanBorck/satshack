@@ -16,6 +16,7 @@ const theme_1 = require("./controllers/theme");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.post("/bet/:id/confirm", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.confirmPayment)(req, res); }));
 app.post("/bet/start", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.startBet)(req, res); }));
 app.post("/bet/accept", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.createBet)(req, res); }));
 app.get("/bets/:themeId", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, bet_1.getBetsFromThemeId)(req, res); }));

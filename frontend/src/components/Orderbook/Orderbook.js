@@ -13,20 +13,20 @@ const Orderbook = ({themeId, option_1, option_2}) => {
     //     { type: "B", wallet: "0x035475D1b044F15A710ME4688S72523622DF7eb2", quantity: 20, odd: 1 },
     //     { type: "B", wallet: "0x035475D1b044F15A710ME4F68872523622DF7eb2", quantity: 25, odd: 4 },
     // ];
+    const fetchOrders = async () => {
+        const url = `${process.env.REACT_APP_API_URL}/bets/${themeId}`;
+        axios.get(url)
+        .then(response => {
+            setOrders(response.data);
+            console.log("got orders", response.data);
+        }).catch(error => {
+            console.log(error);
+            window.alert(" order Error");
+            setOrders([]);
+        });
+    };
 
     useEffect(() => {
-        const fetchOrders = async () => {
-            const url = `${process.env.REACT_APP_API_URL}/bets/${themeId}`;
-            axios.get(url)
-            .then(response => {
-                setOrders(response.data);
-                console.log("got orders", response.data);
-            }).catch(error => {
-                console.log(error);
-                window.alert(" order Error");
-                setOrders([]);
-            });
-        };
         fetchOrders();
     }, []);
     
@@ -41,6 +41,10 @@ const Orderbook = ({themeId, option_1, option_2}) => {
         try{
         
             const url = `${process.env.REACT_APP_API_URL}/bet/accept`;
+            const urlConfirm = `${process.env.REACT_APP_API_URL}/bet/${betId}/confirm`;
+
+            console.log("urlConfirm", urlConfirm);
+
 
             const accepter = await window.unisat.getPublicKey();
             console.log("accepter", accepter)
@@ -58,7 +62,17 @@ const Orderbook = ({themeId, option_1, option_2}) => {
             const txId = await window.unisat.sendBitcoin(escrowAddress.data.address, parseInt(value));
 
             window.alert("Success! Transaction ID: " + txId);
+
+            const bodyConfirm = {
+                public_key_accepter: accepter,
+            }
+            
+            await axios.post(urlConfirm, bodyConfirm);
+            await fetchOrders();
+            
             window.open("https://mempool.space/testnet/tx/" + txId);
+            
+            
 
 
 
