@@ -19,6 +19,15 @@ export default function CreateTheme() {
             <div className='h-screen w-[100vw] lg:w-[75vw] text-gray-700 overflow-y-auto'>
                 <section className="">
                     <div className="container mx-auto px-0 text-center py-12 mb-2 md:px-6 lg:px-6">
+                        <div className='flex flex-col items-start pl-8'>
+                            <button
+                                onClick={() => history(`/`)}
+                                relative="path"
+                                className="text-white text-xl hover:text-blue-color"
+                            >&larr;
+                                <span className='p-3 text-1.5rem'>Back</span>
+                            </button>
+                        </div>
                         <div className='flex flex-row justify-center mt-10 mb-10'>
                             <div className='w-[100%] mx-6 px-10 pb-6 shadow-lg text-white bg-cover bg-[url("././assets/bkg_card.png")] rounded-[20px]'>
                                 <h2 className="flex justify-center items-center h-[12vh] mx-6 text-4xl font-bold text-center text-white">

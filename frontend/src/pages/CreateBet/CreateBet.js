@@ -18,6 +18,15 @@ export default function CreateBet() {
             <div className='h-screen w-[100vw] lg:w-[75vw] text-gray-700 overflow-y-auto'>
                 <section className="">
                     <div className="container mx-auto px-0 text-center pt-12 mb-2 md:px-6 lg:px-6">
+                        <div className='flex flex-col items-start pl-8'>
+                            <button
+                                onClick={() => history(`/`)}
+                                relative="path"
+                                className="text-white text-xl hover:text-blue-color"
+                            >&larr;
+                                <span className='p-3 text-1.5rem'>Back</span>
+                            </button>
+                        </div>
                         <div className='flex flex-row justify-center mt-10 mb-10'>
                             <div className='w-[100%] mx-6 px-10 pb-6 shadow-lg text-white bg-cover bg-[url("././assets/bkg_card.png")] rounded-[20px]'>
                                 <h2 className="flex justify-center items-center h-[12vh] mx-6 text-4xl font-bold text-center text-white">
@@ -29,23 +38,6 @@ export default function CreateBet() {
                                 <div className='my-6'>
                                     <div>
                                         <div className="mb-4 text-white">
-                                        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 md:space-x-12 lg:space-x-12">
-                                            <div className="flex flex-col">
-                                                <label className="block font-medium md:text-md lg:text-md mb-2" htmlFor="name">
-                                                    What will be your option to bet?
-                                                </label>
-                                                <select
-                                                    id="name"
-                                                    name="name"
-                                                    value={name}
-                                                    onChange={(e) => setName(e.target.value)}
-                                                    className="bg-transparent border-b-[1px] border-white md:text-md lg:text-md text-center text-white p-2 mt-4 outline-0 shadow-lg hover:bg-[rgba(256,256,256,0.05)] transition duration-1000 ease-in-out"
-                                                >
-                                                    <option className='text-black' value="A">Type A</option>
-                                                    <option className='text-black' value="B">Type B</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:space-x-12 lg:space-x-12">
                                             <div className="flex flex-col">
                                                 <label className="block font-medium md:text-md lg:text-md mb-2 mt-6" htmlFor="admFee">

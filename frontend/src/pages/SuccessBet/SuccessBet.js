@@ -10,7 +10,7 @@ export default function SuccessBet() {
         <>
             <div className='w-[100vw] lg:w-[75vw] h-screen overflow-y-auto'>
                 <section className="mb-6">
-                    <div className="container mx-auto px-6 text-center py-8">
+                    <div className="container mx-auto px-6 text-center pt-12">
                         <div className='flex flex-col justify-center items-center my-10 mx-6 mb-12 shadow-lg text-white rounded-[20px] bg-cover bg-[url("././assets/bkg_card.png")]'>
                             <h2 className="flex justify-center items-center h-[12vh] mx-6 text-4xl font-bold text-center text-white">
                             Congratulations

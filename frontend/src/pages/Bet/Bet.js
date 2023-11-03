@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import LogoApp from '../../assets/betcoin_logotext.png';
 import Orderbook from '../../components/Orderbook/Orderbook';
 
@@ -22,13 +22,13 @@ export default function Bet() {
         <div className='w-[100vw] lg:w-[75vw] overflow-y-auto'>
             {bet ? (
                 <div className='flex flex-col items-start m-[2.5vh] lg:m-[5vh] space-y-8'>
-                    <Link
-                        to=".."
+                    <button
+                        onClick={() => history(`/`)}
                         relative="path"
                         className="text-white text-xl hover:text-blue-color"
                     >&larr;
                         <span className='p-3 text-1.5rem'>Back</span>
-                    </Link>
+                    </button>
                     <div className="w-[100%] flex justify-center items-center bg-cover bg-[url('././assets/bkg_active_card.png')] h-[12vh] text-4xl font-bold text-center text-white shadow-lg rounded-[16px]">
                         {bet.name}
                     </div>

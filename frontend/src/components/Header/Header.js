@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LogoApp from "../../assets/betcoin_logotext.png";
 
-export default function Header({ isMetamaskInstalled, connectWallet, account, signer }) {
+export default function Header({ isUnisatInstalled, connectWallet, account, signer }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const history = useNavigate();
 
@@ -71,7 +71,7 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
                             </div>
                             <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
                                 <ConnectWalletBtn
-                                    isMetamaskInstalled={isMetamaskInstalled}
+                                    isUnisatInstalled={isUnisatInstalled}
                                     connectWallet={connectWallet}
                                     account={account}
                                     signer={signer}
@@ -92,7 +92,7 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
                     <li><div className="px-6 lg:px-6 py-2 text-[1.25vw] hover:bg-[rgb(14,42,98)] transition duration-1000 ease-in-out" 
                     onClick={()  => history("/fundslist")} >Funds List</div></li>
                     <ConnectWalletBtn
-                        isMetamaskInstalled={isMetamaskInstalled}
+                        isUnisatInstalled={isUnisatInstalled}
                         connectWallet={connectWallet}
                         account={account}
                         signer={signer}
@@ -103,10 +103,10 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
             </div>
 
             <>
-                {isMetamaskInstalled ? (
+                {isUnisatInstalled ? (
                     <div
                         onClick={connectWallet}
-                        className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 bg-secondary-color hover:bg-primary-color text-white rounded-full cursor-pointer transition duration-600 ease-in-out"
+                        className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 font-bold text-center bg-primary-color hover:bg-blue-color text-white rounded-full cursor-pointer transition duration-1000 ease-in-out"
                     >
                         <h3 className="flex justify-center">
                             {account
@@ -118,9 +118,9 @@ export default function Header({ isMetamaskInstalled, connectWallet, account, si
                         </h3>
                     </div>
                 ) : (
-                    <div className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 bg-secondary-color hover:bg-primary-color text-white rounded-full cursor-pointer transition duration-600 ease-in-out">
-                        <a href="https://metamask.io/download/">
-                            Install Metamask
+                    <div className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 font-bold text-center bg-primary-color hover:bg-blue-color text-white rounded-full cursor-pointer transition duration-1000 ease-in-out">
+                        <a className="text-center" href="https://unisat.io/download">
+                            Install Unisat
                         </a>
                     </div>
                 )}
