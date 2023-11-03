@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pg_1 = require("pg");
-const { Pool } = pg_1.default;
-console.log();
+const pg = require("pg");
+const { Pool } = pg;
 const connection = new Pool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,

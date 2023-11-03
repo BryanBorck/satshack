@@ -1,9 +1,7 @@
 
-import pg from "pg";
+import * as pg from "pg";
 
 const { Pool } = pg;
-
-console.log()
 
 const connection = new Pool({
     user: process.env.DB_USER,

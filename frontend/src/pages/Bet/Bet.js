@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import LogoApp from '../../assets/betcoin_logotext.png';
 import Orderbook from '../../components/Orderbook/Orderbook';
 
@@ -8,15 +8,20 @@ export default function Bet() {
 
     const history = useNavigate();
 
-    const [bet, setBet] = useState({
-        // TESTE
-        id: id,
-        name: `Bet ${id}`,
-        option1: 'Type A',
-        option2: 'Type B',
-        description: `Bet ${id} description`,
-        cover: 'https://img.staticmb.com/mbcontent/images/uploads/2023/1/white-house.jpg'
-    });
+    // const [bet, setBet] = useState({
+    //     // TESTE
+    //     id: id,
+    //     name: `Bet ${id}`,
+    //     option_1: 'Type A',
+    //     option_2: 'Type B',
+    //     description: `Bet ${id} description`,
+    //     cover: 'https://img.staticmb.com/mbcontent/images/uploads/2023/1/white-house.jpg'
+    // });
+
+    // get location state
+    const location = useLocation();
+    const bet = location.state.bet;
+
 
     return (
         <div className='w-[100vw] md:w-[75vw] lg:w-[75vw] overflow-y-auto'>
@@ -39,25 +44,25 @@ export default function Bet() {
                         <img src={bet.cover} className="object-cover w-[100%] flex justify-center items-center h-[60vh] rounded-t-[16px]"/>
                         <div className='flex flex-row text-center w-full text-xl lg:text-3xl text-white font-bold cursor-pointer'>
                             <button
-                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option1}`)}
+                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option_1}`)}
                                 className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-yellow-color drop-shadow-glow rounded-bl-[16px] transition duration-1000 ease-in-out'
                             >
                                 <p>
-                                    Create bet in {bet.option1}
+                                    Create bet in {bet.option_1}
                                 </p>
                             </button>
                             <button
-                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option2}`)}
+                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option_2}`)}
                                 className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-green-color drop-shadow-glow rounded-br-[16px] transition duration-1000 ease-in-out'
                             >
                                 <p>
-                                    Create bet in {bet.option2}
+                                    Create bet in {bet.option_2}
                                 </p>
                             </button>
                         </div>
                     </div>
                     <div className='flex flex-row my-[5vh] content-center w-full'>
-                        <Orderbook/>
+                        <Orderbook  themeId={bet.theme} />
                     </div>
                 </div>
             ) : <h2>Loading...</h2>}

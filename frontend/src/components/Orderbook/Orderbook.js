@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 
-const Orderbook = () => {
+const Orderbook = ({themeId}) => {
     const [orders, setOrders] = useState([]);
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -16,14 +17,11 @@ const Orderbook = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await fetch("http://localhost:5000/orders");
-                if (!res.ok) {
-                    throw new Error(`Request failed with status: ${res.status}`);
-                }
-                const data = await res.json();
-                setOrders(data);
-                setErrorMsg(null);
-                console.log(data);
+                const url = `${process.env.REACT_APP_API_URL}/bets/${themeId}`;
+                axios.get(url)
+                
+
+                
             } catch (error) {
                 setOrders([]);
                 setErrorMsg(error.message);
