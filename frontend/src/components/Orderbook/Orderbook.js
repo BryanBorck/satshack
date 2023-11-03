@@ -1,19 +1,48 @@
-import React from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const Orderbook = () => {
-    const orders = [
-        { type: "A", wallet: "0x035475D1b044F15AA710ME468872523622DF7eb2", quantity: 5, odd: 1 },
-        { type: "A", wallet: "0x035475D1b044F15A710ME468D872523622DF7eb2", quantity: 10, odd: 2 },
-        { type: "A", wallet: "0x035475D1b044F15A710ME468G872523622DF7eb2", quantity: 15, odd: 2 },
-        { type: "B", wallet: "0x035475D1b044F15A710ME4688S72523622DF7eb2", quantity: 20, odd: 1 },
-        { type: "B", wallet: "0x035475D1b044F15A710ME4F68872523622DF7eb2", quantity: 25, odd: 4 },
-        
-    ];
+    const [orders, setOrders] = useState([]);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    // dummy data
+    // orders = [
+    //     { type: "A", wallet: "0x035475D1b044F15AA710ME468872523622DF7eb2", quantity: 5, odd: 1 },
+    //     { type: "A", wallet: "0x035475D1b044F15A710ME468D872523622DF7eb2", quantity: 10, odd: 2 },
+    //     { type: "A", wallet: "0x035475D1b044F15A710ME468G872523622DF7eb2", quantity: 15, odd: 2 },
+    //     { type: "B", wallet: "0x035475D1b044F15A710ME4688S72523622DF7eb2", quantity: 20, odd: 1 },
+    //     { type: "B", wallet: "0x035475D1b044F15A710ME4F68872523622DF7eb2", quantity: 25, odd: 4 },
+    // ];
+
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const res = await fetch("http://localhost:5000/orders");
+                if (!res.ok) {
+                    throw new Error(`Request failed with status: ${res.status}`);
+                }
+                const data = await res.json();
+                setOrders(data);
+                setErrorMsg(null);
+                console.log(data);
+            } catch (error) {
+                setOrders([]);
+                setErrorMsg(error.message);
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchOrders();
+    }, []);
+    
 
     const orderTypes = [...new Set(orders.map((order) => order.type))]; // Extract unique order types
 
+    const handleBetClick = () => {
+        console.log("Bet clicked");
+    }
+
     return (
         <div className="w-[100%] grid grid-cols-1 lg:gap-10 lg:grid-cols-2 my-[2.5vh] ">
+            {errorMsg && <div className="text-red-500">{errorMsg}</div>}
             {orderTypes.map((type, index) => (
                 <div key={index} className="">
                     <h1 className="text-3xl text-white font-semibold my-6 md:mb-4 lg:mb-4">{`Type ${type} Orders`}</h1>
@@ -52,7 +81,9 @@ const Orderbook = () => {
                                             {order.odd}
                                         </div>
                                         <div className="py-3 px-6 text-left flex-1">
-                                            <button className="w-full bg-transparent hover:bg-blue-color text-clue-color font-bold hover:text-white py-2 px-4 border-2 border-blue-color hover:border-transparent rounded">
+                                            <button 
+                                                onClick={() => handleBetClick()}
+                                                className="w-full bg-transparent hover:bg-blue-color text-clue-color font-bold hover:text-white py-2 px-4 border-2 border-blue-color hover:border-transparent rounded">
                                                 Bet
                                             </button>
                                         </div>
