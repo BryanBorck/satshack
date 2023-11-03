@@ -29,7 +29,7 @@ export default function Bet() {
                         Tema da Aposta
                     </div>
 
-                    <div className='flex flex-row mb-[2.5vh] content-center'>
+                    <div className='flex flex-row mb-[2.5vh] content-center w-full'>
                         <Orderbook/>
                     </div>
 
