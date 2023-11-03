@@ -18,7 +18,7 @@ const Orderbook = () => {
                 <div key={index} className="">
                     <h1 className="text-3xl text-white font-semibold mb-4">{`Type ${type} Orders`}</h1>
                     <div className="min-w-max w-full shadow-lg rounded-lg overflow-hidden">
-                        <div className="bg-gray-200 text-gray-600 font-bold uppercase text-sm leading-normal flex">
+                        <div className= {`${index ? 'border-green-color' : 'border-yellow-color'} bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white font-bold uppercase text-sm leading-normal flex`}>
                             <div className="py-3 px-6 text-left flex-1">
                                 Wallet
                             </div>
