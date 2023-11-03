@@ -41,6 +41,31 @@ export default function Header({ isUnisatInstalled, connectWallet, account, sign
                     >
                         Test Create Bet
                     </button>        
+                    <button
+                        className="w-full py-[1vh] rounded-[16px] font-bold bg-[rgba(256,256,256,0.05)] hover:bg-[rgba(100,50,256,0.5)] transition duration-1000 ease-in-out"
+                    >
+                        {isUnisatInstalled ? (
+                    <div
+                        onClick={connectWallet}
+                    >
+                        <h3 className="flex justify-center">
+                            {account
+                                ? "Wallet Connected: " +
+                                  account.substring(0, 5) +
+                                  "..." +
+                                  account.substring(39, 42)
+                                : "Connect Wallet"}
+                        </h3>
+                    </div>
+                ) : (
+                    <div 
+                    >
+                        <a className="text-center" href="https://unisat.io/download">
+                            Install Unisat
+                        </a>
+                    </div>
+                )}
+                    </button>        
                 </div>
 
                 {/* sidebar menu
@@ -101,30 +126,6 @@ export default function Header({ isUnisatInstalled, connectWallet, account, sign
                 </div>
              */}
             </div>
-
-            <>
-                {isUnisatInstalled ? (
-                    <div
-                        onClick={connectWallet}
-                        className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 font-bold text-center bg-primary-color hover:bg-blue-color text-white rounded-full cursor-pointer transition duration-1000 ease-in-out"
-                    >
-                        <h3 className="flex justify-center">
-                            {account
-                                ? "Wallet Connected: " +
-                                  account.substring(0, 5) +
-                                  "..." +
-                                  account.substring(39, 42)
-                                : "Connect Wallet"}
-                        </h3>
-                    </div>
-                ) : (
-                    <div className="absolute w-[12vw] right-[3vw] top-[3vh] p-3 font-bold text-center bg-primary-color hover:bg-blue-color text-white rounded-full cursor-pointer transition duration-1000 ease-in-out">
-                        <a className="text-center" href="https://unisat.io/download">
-                            Install Unisat
-                        </a>
-                    </div>
-                )}
-            </>
         </header>
     );
 }
