@@ -17,9 +17,9 @@ export default function Bet() {
     });
 
     return (
-        <div className='w-[75vw] overflow-y-auto'>
+        <div className='w-[100vw] lg:w-[75vw] overflow-y-auto'>
             {bet ? (
-                <div className='flex flex-col items-start m-[5vh] space-y-8'>
+                <div className='flex flex-col items-start m-[2.5vh] lg:m-[5vh] space-y-8'>
                     <Link
                         to=".."
                         relative="path"
@@ -35,7 +35,7 @@ export default function Bet() {
                     </div>
                     <div className='w-[100%] flex flex-col justify-center bg-gradient-to-r from-primary-blur to-secondary-blur rounded-[16px]'>
                         <img src={bet.cover} className="object-cover w-[100%] flex justify-center items-center h-[60vh] rounded-t-[16px]"/>
-                        <div className='flex flex-row text-center w-full text-3xl text-white font-bold cursor-pointer'>
+                        <div className='flex flex-row text-center w-full text-xl lg:text-3xl text-white font-bold cursor-pointer'>
                             <div className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-yellow-color drop-shadow-glow rounded-bl-[16px] transition duration-1000 ease-in-out'>Create bet in {bet.option1}</div>
                             <div className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-green-color drop-shadow-glow rounded-br-[16px] transition duration-1000 ease-in-out'>Create bet in {bet.option2}</div>
                         </div>

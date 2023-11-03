@@ -119,7 +119,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='w-[75vw] h-[100vh] text-gray-700 overflow-y-auto'>
+            <div className='w-[100vw] lg:w-[75vw] h-[100vh] text-gray-700 overflow-y-auto'>
                 <section className="">
                     <div className="container mx-auto py-12 md:px-6 lg:px-6">
                         <h2 className="mb-2 text-4xl pl-6 font-bold text-white">
