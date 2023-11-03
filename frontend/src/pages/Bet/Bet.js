@@ -39,7 +39,7 @@ export default function Bet() {
                         <img src={bet.cover} className="object-cover w-[100%] flex justify-center items-center h-[60vh] rounded-t-[16px]"/>
                         <div className='flex flex-row text-center w-full text-xl lg:text-3xl text-white font-bold cursor-pointer'>
                             <button
-                                onClick={() => history(`/createbet/${bet.id}/${bet.option1}`)}
+                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option1}`)}
                                 className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-yellow-color drop-shadow-glow rounded-bl-[16px] transition duration-1000 ease-in-out'
                             >
                                 <p>
@@ -47,7 +47,7 @@ export default function Bet() {
                                 </p>
                             </button>
                             <button
-                                onClick={() => history(`/createbet/${bet.id}/${bet.option2}`)}
+                                onClick={() => history(`/createbet/${bet.id}/${bet.name}/${bet.option2}`)}
                                 className='basis-1/2 flex h-[12vh] items-center justify-center bg-transparent hover:bg-green-color drop-shadow-glow rounded-br-[16px] transition duration-1000 ease-in-out'
                             >
                                 <p>
