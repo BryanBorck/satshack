@@ -22,6 +22,7 @@ function createBet(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const betId = req.body.bet_id;
+            console.log("betId", betId);
             const publicKeyAccepter = req.body.public_key_accepter;
             const MNEMONIC = process.env.MNEMONIC;
             const query = yield database_1.default.query(`
@@ -31,6 +32,7 @@ function createBet(req, res) {
             if (bets.lenght == 0) {
                 return res.sendStatus(404);
             }
+            console.log("bets", bets);
             const bet = bets[0];
             const publicKeyStarter = bet.public_key_starter;
             if (!publicKeyStarter || !publicKeyAccepter) {

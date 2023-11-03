@@ -33,11 +33,28 @@ const Orderbook = ({themeId, option_1, option_2}) => {
     option_1 = "1";
     option_2 = "2";
 
-    const orderTypes = [option_1, option_2]; // Extract unique order types
+    const orderTypes = ["1", "2"]; // Extract unique order types
     
 
-    const handleBetClick = () => {
-        console.log("Bet clicked");
+    const handleBetClick = async (betId) => {
+        
+        const url = `${process.env.REACT_APP_API_URL}/bet/accept`;
+
+        const accepter = await window.unisat.getPublicKey();
+        console.log("accepter", accepter)
+
+        const body = {
+            bet_id: betId,
+            public_key_accepter: accepter
+        }
+
+        axios.post(url, body)
+        .then(() =>{
+            window.alert("Success!");
+        }).catch(error =>{
+            console.log(error);
+            window.alert("Error");
+        });
     }
 
     return (
@@ -45,9 +62,8 @@ const Orderbook = ({themeId, option_1, option_2}) => {
             {errorMsg && <div className="text-red-500">{errorMsg}</div>}
             {orderTypes.map((type, index) => {
                 
-                console.log(type)
                 return(<div key={index} className="">
-                    <h1 className="text-3xl text-white font-semibold my-6 md:mb-4 lg:mb-4">{`Type ${type} Orders`}</h1>
+                    <h1 className="text-3xl text-white font-semibold my-6 md:mb-4 lg:mb-4">{`Pro ${type == "1" ? option_1: option_2} Orders`}</h1>
                     <div className="w-full shadow-lg rounded-lg overflow-hidden">
                         <div className= {`${index ? 'border-green-color' : 'border-yellow-color'} bg-gradient-to-r from-primary-color to-secondary-color rounded-lg border-[3px] text-white font-bold uppercase text-[0.8rem] leading-normal flex`}>
                             <div className="py-3 px-6 text-left flex-1">
@@ -89,7 +105,7 @@ const Orderbook = ({themeId, option_1, option_2}) => {
                                         </div>
                                         <div className="py-3 px-6 text-left flex-1">
                                             <button 
-                                                onClick={() => handleBetClick()}
+                                                onClick={() => handleBetClick(order.id)}
                                                 className="w-full bg-transparent hover:bg-blue-color text-clue-color font-bold hover:text-white py-2 px-4 border-2 border-blue-color hover:border-transparent rounded">
                                                 Bet
                                             </button>

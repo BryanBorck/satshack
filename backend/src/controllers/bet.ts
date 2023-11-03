@@ -13,6 +13,7 @@ export async function createBet(req: Request, res: Response) {
     try{
         
         const betId = req.body.bet_id;
+        console.log("betId", betId);
         const publicKeyAccepter = req.body.public_key_accepter;
         const MNEMONIC = process.env.MNEMONIC;
         
@@ -24,6 +25,8 @@ export async function createBet(req: Request, res: Response) {
         if(bets.lenght == 0){
             return res.sendStatus(404);
         }
+
+        console.log("bets", bets)
 
         const bet = bets[0];
         const publicKeyStarter = bet.public_key_starter;
