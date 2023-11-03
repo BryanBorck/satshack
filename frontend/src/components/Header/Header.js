@@ -2,8 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LogoApp from "../../assets/betcoin_logotext.png";
 
-export default function Header({ isUnisatInstalled, connectWallet, account, signer }) {
+export default function Header({ unisat, address, publicKey, isUnisatInstalled, handleAccountsChanged }) {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const history = useNavigate();
 
     return (
@@ -46,14 +48,17 @@ export default function Header({ isUnisatInstalled, connectWallet, account, sign
                     >
                         {isUnisatInstalled ? (
                     <div
-                        onClick={connectWallet}
+                        onClick={async () => {
+                            const result = await unisat.requestAccounts();
+                            handleAccountsChanged(result);
+                        }}
                     >
-                        <h3 className="flex justify-center">
-                            {account
+                        <h3 className="flex justify-center truncate">
+                            {address
                                 ? "Wallet Connected: " +
-                                  account.substring(0, 5) +
+                                  address.substring(0, 5) +
                                   "..." +
-                                  account.substring(39, 42)
+                                  address.substring(39, 42)
                                 : "Connect Wallet"}
                         </h3>
                     </div>
